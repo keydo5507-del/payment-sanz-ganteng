@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Al Payment Sanz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="header hide" id="app-header">
+      <div class="logo-area">
+        <div class="logo">A</div>
+        <b>Al Payment Sanz</b>
+      </div>
+      <div class="user-area">
+        <span id="user-name"></span>
+        <button class="btn-logout" id="btn-logout">Keluar</button>
+      </div>
+    </header>
+
+    <div class="progress hide" id="progress">
+      <span id="p1"></span><span id="p2"></span><span id="p3"></span><span id="p4"></span>
+    </div>
+
+    <main class="card">
+
+      <!-- AUTH -->
+      <div id="login-screen">
+        <div class="logo-big">A</div>
+        <h1 id="auth-title">Masuk</h1>
+        <p class="sub" id="auth-sub">Masuk untuk melanjutkan pembayaran</p>
+
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" id="tab-login" data-tab="login">Masuk</button>
+          <button type="button" class="auth-tab" id="tab-register" data-tab="register">Daftar</button>
+          <button type="button" class="auth-tab" id="tab-owner" data-tab="owner">Owner</button>
+        </div>
+
+        <!-- LOGIN USER -->
+        <div id="form-login">
+          <label class="lab">Nama / Email</label>
+          <input id="login-id" class="in" placeholder="Nama atau email Gmail" autocomplete="username">
+          <label class="lab">Sandi</label>
+          <div class="pw">
+            <input id="login-pw" class="in" type="password" placeholder="Sandi" autocomplete="current-password">
+            <button type="button" class="eye" data-target="login-pw" aria-label="Lihat sandi">👁</button>
+          </div>
+          <div class="err" id="login-err" role="alert"></div>
+          <button class="pay" id="btn-do-login">Masuk</button>
+        </div>
+
+        <!-- DAFTAR -->
+        <div id="form-register" class="hide">
+          <label class="lab">Nama</label>
+          <input id="reg-name" class="in" placeholder="Nama lengkap" autocomplete="name" maxlength="40">
+          <label class="lab">Akun Google (wajib @gmail.com)</label>
+          <input id="reg-email" class="in" type="email" placeholder="nama@gmail.com" autocomplete="email" maxlength="60">
+          <label class="lab">Sandi (minimal 4 karakter)</label>
+          <div class="pw">
+            <input id="reg-pw" class="in" type="password" placeholder="Sandi" autocomplete="new-password" minlength="4">
+            <button type="button" class="eye" data-target="reg-pw">👁</button>
+          </div>
+          <label class="lab">Ulangi sandi</label>
+          <div class="pw">
+            <input id="reg-pw2" class="in" type="password" placeholder="Ulangi sandi" autocomplete="new-password" minlength="4">
+            <button type="button" class="eye" data-target="reg-pw2">👁</button>
+          </div>
+          <div class="err" id="reg-err" role="alert"></div>
+          <button class="pay" id="btn-do-register">Daftar</button>
+        </div>
+
+        <!-- OWNER LOGIN -->
+        <div id="form-owner" class="hide">
+          <label class="lab">Username owner</label>
+          <input id="owner-user" class="in" placeholder="Username" autocomplete="username">
+          <label class="lab">Sandi owner</label>
+          <div class="pw">
+            <input id="owner-pw" class="in" type="password" placeholder="Sandi owner" autocomplete="current-password">
+            <button type="button" class="eye" data-target="owner-pw">👁</button>
+          </div>
+          <div class="err" id="owner-err" role="alert"></div>
+          <button class="pay" id="btn-owner-login">Masuk sebagai Owner</button>
+        </div>
+      </div>
+
+      <!-- OWNER PANEL -->
+      <div id="owner-panel" class="hide">
+        <h1>Panel Owner</h1>
+        <p class="sub">Kelola akun & pantau pendaftar</p>
+        <div class="h">Akun terdaftar (perangkat ini)</div>
+        <div id="owner-user-list" class="owner-list"></div>
+        <p class="sub" style="margin-top:12px;font-size:13px">
+          Setiap pendaftaran baru juga dikirim ke Telegram owner (semua perangkat).
+        </p>
+        <button class="ghost" id="btn-owner-refresh">Refresh daftar</button>
+        <button class="ghost" id="btn-owner-logout">Keluar owner</button>
+      </div>
+
+      <!-- STEP BUYER -->
+      <div id="step-buyer" class="hide">
+        <h1>Data Pembayaran</h1>
+        <p class="sub">Isi data buyer dengan benar</p>
+        <div class="h">Data Buyer</div>
+        <input id="bu" class="in" placeholder="Username buyer" maxlength="32" autocomplete="off" autocapitalize="none">
+        <input id="ba" class="in" placeholder="Nama aplikasi / Nokos" maxlength="40" autocomplete="off">
+        <div class="amt">
+          <span>Rp</span>
+          <input id="bn" class="in" inputmode="numeric" placeholder="Nominal" autocomplete="off">
+        </div>
+        <div class="cc" id="tipe" role="group">
+          <button type="button" class="chip" data-t="DP" aria-pressed="false">DP</button>
+          <button type="button" class="chip" data-t="LUNAS" aria-pressed="false">LUNAS</button>
+        </div>
+        <div class="err" id="berr" role="alert"></div>
+        <button class="pay" id="btn-next-method">Lanjut pilih metode →</button>
+      </div>
+
+      <div id="step-method" class="hide">
+        <h1>Pilih Metode</h1>
+        <p class="sub" id="sum-method"></p>
+        <div class="methods" id="list"></div>
+        <button class="ghost" id="btn-back-buyer">← Kembali</button>
+      </div>
+
+      <div id="step-pay" class="hide"></div>
+      <div id="step-result" class="hide"></div>
+    </main>
+  </div>
+
+  <button id="chat-toggle" title="Bantuan AI">💬</button>
+  <div id="chat-box" class="hide">
+    <div class="chat-header">
+      <span>Asisten AI Payment</span>
+      <button id="chat-close">✕</button>
+    </div>
+    <div class="chat-msgs" id="chat-msgs">
+      <div class="msg bot">Halo! Saya asisten AI. Tanya saja tentang cara bayar, status, atau masalah di web ini.</div>
+    </div>
+    <div class="chat-input">
+      <input id="chat-input" placeholder="Tulis pertanyaan..." autocomplete="off">
+      <button id="chat-send">Kirim</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "payment-sanz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Al Payment Sanz - Payment gateway with Google login via Supabase + AI assistant",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}
