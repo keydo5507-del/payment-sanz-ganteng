@@ -25,7 +25,7 @@ module.exports = {
     model: "gemini-3.5-flash",
     apiKey: "AQ.Ab8RN6LzHdOrH9T3z6w9ec9T7t0R_MXbV8p-D_Tg6pWAnCMBqQ", // dari https://aistudio.google.com/apikey
     // Base URL resmi Google AI
-    baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+    baseUrl: "https://generativelanguage.googleapis.com/v1beta",
   },
 
   // ---------- App ----------
