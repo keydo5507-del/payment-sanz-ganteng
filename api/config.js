@@ -23,7 +23,7 @@ module.exports = {
   gemini: {
     // Model terbaru (2026). Bisa diganti: gemini-3.5-flash-lite | gemini-3.6-flash | gemini-3.8-flash
     model: "gemini-3.5-flash",
-    apiKey: "AQ.Ab8RN6LzHdOrH9T3z6w9ec9T7t0R_MXbV8p-D_Tg6pWAnCMBqQ", // dari https://aistudio.google.com/apikey
+    apiKey: "AQ.Ab8RN6KCxQPqzuLOaGKyTlYBzvZZvJBgzO3Q_mMM4ScbYlEUrQ", // dari https://aistudio.google.com/apikey
     // Base URL resmi Google AI
     baseUrl: "https://generativelanguage.googleapis.com/v1beta",
   },
